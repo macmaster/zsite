@@ -2,6 +2,8 @@ body {
 	background-color: #4e4e4e;
 	color: #00FF00;
 	font-size: 30px;
+	display: block;
+	margin: auto;
 	text-align: center;
 }
 
@@ -51,7 +53,7 @@ a:active {
 
 #content {
 	/* border: 1px solid #000; */
-	display: inline-block;
+	display: block;
 	padding: 20px 20px;
 	margin: auto;
 	width: 100%;
@@ -64,12 +66,15 @@ a:active {
 	stroke: #C7C7C7;
 }
 .thread1 {
-	fill: #FF4400;
+	fill: #C62F0F;
 	stroke-width: 1px;
 	stroke: #C7C7C7;
 }
 .thread2 {
-	fill: #FF4400;
+	fill: #0044FF;
 	stroke-width: 1px;
 	stroke: #C7C7C7;
+}
+.threadPlot {
+	margin: 30px;
 }

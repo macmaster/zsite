@@ -19,6 +19,7 @@
 		<a class="item" href="latency.php">Latency</a>
 		<a class="item" href="caches.php">Caches</a>
 		<a class="item" href="reorder.php">Reorder Buffers</a>
+		<a class="item" href="plots.php">Experiment</a>
 	</div>
 </div>
 <div id="content">
