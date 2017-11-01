@@ -1,0 +1,75 @@
+body {
+	background-color: #4e4e4e;
+	color: #00FF00;
+	font-size: 30px;
+	text-align: center;
+}
+
+#header {
+	display: inline-block;
+	margin: auto;
+}
+
+#menu {
+	height: 20px;
+	width: 100%;
+	margin: 30px;
+}
+
+#menu a:hover {
+	background-color: #009FC1;
+}
+
+#menu a:visited {
+    color: maroon;
+}
+
+.item {
+	background-color: #ABBBAB;
+	border: 1px solid #032472;
+	text-decoration: none;
+	font-size: 40px;
+	padding: 6px;
+	margin: 3px;
+}
+
+a:link {
+    color: red;
+}
+
+a:visited {
+    color: fuchsia;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+a:active {
+    color: blue;
+} 
+
+#content {
+	/* border: 1px solid #000; */
+	display: inline-block;
+	padding: 20px 20px;
+	margin: auto;
+	width: 100%;
+}
+
+/* SMT Visualizations */
+.idle {
+	fill: #DDDDDD;
+	stroke-width: 1px;
+	stroke: #C7C7C7;
+}
+.thread1 {
+	fill: #FF4400;
+	stroke-width: 1px;
+	stroke: #C7C7C7;
+}
+.thread2 {
+	fill: #FF4400;
+	stroke-width: 1px;
+	stroke: #C7C7C7;
+}
