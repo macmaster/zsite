@@ -57,7 +57,7 @@ function buildSmtMap(gridSize, ratios) {
 
 function getFineCell(x, y, color, idle) {
 	var ticket = Math.random();
-	var type = ticket < idle ? "idle" : color;
+	var type = ticket < (idle * 1.2) ? "idle" : color;
 	return { x : x, y : y , type : type };
 }
 
@@ -82,7 +82,7 @@ function buildFineMap(gridSize, ratios) {
 
 function getCoarseCell(x, y, color, idle) {
 	var ticket = Math.random();
-	var type = ticket < idle ? "idle" : color;
+	var type = ticket < (idle * 1.5) ? "idle" : color;
 	return { x : x, y : y , type : type };
 }
 
@@ -214,6 +214,6 @@ function redraw() {
 
 
 redraw(); // draw the map
-setInterval(redraw, 1000);
+setInterval(redraw, 500);
 
 });

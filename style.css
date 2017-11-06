@@ -1,17 +1,42 @@
 body {
-	background-color: #4e4e4e;
-	color: #00FF00;
+	background-color: #2e2e2e;
+	color: #FA2;
 	font-size: 30px;
 	display: block;
 	margin: auto;
 	text-align: center;
 }
 
+/* link colors */
+a:link { color: #B00; }
+
+a:visited { color: #B00; }
+
+a:hover { color: #F00; cursor: pointer; }
+
+a:active { color: blue; } 
+
+video { object-fit: fill; }
+
+/* division styles */
 #header {
 	display: inline-block;
 	margin: auto;
 }
 
+#footer {
+  font-size: 18px;
+}
+
+#content {
+	/* border: 1px solid #000; */
+	display: block;
+	padding: 10px 10px;
+	margin: auto;
+	width: 100%;
+}
+
+/* Menu styling */
 #menu {
 	height: 20px;
 	width: 100%;
@@ -20,10 +45,6 @@ body {
 
 #menu a:hover {
 	background-color: #009FC1;
-}
-
-#menu a:visited {
-    color: maroon;
 }
 
 .item {
@@ -35,31 +56,7 @@ body {
 	margin: 3px;
 }
 
-a:link {
-    color: red;
-}
-
-a:visited {
-    color: fuchsia;
-}
-
-a:hover {
-    color: hotpink;
-}
-
-a:active {
-    color: blue;
-} 
-
-#content {
-	/* border: 1px solid #000; */
-	display: block;
-	padding: 20px 20px;
-	margin: auto;
-	width: 100%;
-}
-
-/* SMT Visualizations */
+/* SMT visualization */
 .idle {
 	fill: #DDDDDD;
 	stroke-width: 1px;
@@ -75,6 +72,53 @@ a:active {
 	stroke-width: 1px;
 	stroke: #C7C7C7;
 }
+
 .threadPlot {
-	margin: 30px;
+	padding: 20px;
 }
+
+.mtDesc {
+    width: 70%;
+    display: inline-block;
+}
+.mtDesc p {
+    text-align: left;
+}
+
+/* Slider Bars */
+.slider {
+  opacity: 0.7;
+  height: 20px;
+  width: 50%;
+  background: #FA3;
+  color: red;
+  border-radius: 8px;
+}
+.slider:hover { opacity: 1; }
+.slider::-moz-range-thumb { 
+  background: #F11; 
+  border-radius: 0%; 
+  width: 5%;
+}
+
+/* Latency Visualization */
+#latencyVisual * {
+  margin: 0px;
+}
+
+.latencyDesc {
+    width: 70%;
+    display: inline-block;
+}
+.latencyDesc p {
+    text-align: left;
+}
+
+/* Plots visualization */
+#plot {
+  width: 60%;
+  height: 700px;
+  display: block;
+  margin: auto;
+}
+

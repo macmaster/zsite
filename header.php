@@ -9,6 +9,7 @@
 	<link rel="icon" href="img/cloud1.png" />
 	<script src="https://d3js.org/d3.v3.min.js"></script>
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body> 
 <div id="header">
@@ -17,8 +18,6 @@
 		<a class="item" href="/">Home</a>
 		<a class="item" href="smt.php">SMT</a>
 		<a class="item" href="latency.php">Latency</a>
-		<a class="item" href="caches.php">Caches</a>
-		<a class="item" href="reorder.php">Reorder Buffers</a>
 		<a class="item" href="plots.php">Experiment</a>
 	</div>
 </div>
