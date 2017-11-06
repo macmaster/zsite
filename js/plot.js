@@ -1,4 +1,4 @@
-function plotSMTScatter(err, rows) {
+function plotScatter(err, rows) {
   function unpack(rows, key) {
       return rows.map(function(row)
         { return row[key]; });
@@ -10,7 +10,7 @@ function plotSMTScatter(err, rows) {
       mode: 'markers',
       marker: {
             size: 6,
-            color: "rgb(50, 100, 150)",
+            // color: "rgb(50, 100, 150)",
             line: { color: 'rgba(50, 50, 50, 0.14)', width: 0.5 },
             opacity: 0.8,
       },
@@ -20,21 +20,16 @@ function plotSMTScatter(err, rows) {
   t1 = unpack(rows, 'thread1Cycles');
   t2 = unpack(rows, 'thread2Cycles');
   trace.z = t1.map((val, i) =>  Math.max(parseInt(val), parseInt(t2[i])));
-
-  var data = [trace];
-  var layout = { 
-    margin: { l: 40, r: 40, b: 0, t: 0, },
-    scene: {
-      title: "SMT Core vs OOO Core",
-      xaxis: { title: "Reorder Buffer Size [entries]" },  
-      yaxis: { title: "L1 Instruction Cache Size [bytes]" }, 
-      zaxis: { title: "Total Execution Cycles (Thread1 and Thread2)" },
-    }
-  };
-  Plotly.newPlot('plot', data, layout);
+  Plotly.addTraces("plot", trace);
 }
 
-function plotSMTSurface(err, rows) {
+function replotScatter (err, rows) {
+  Plotly.purge("plot");
+  initPlot();
+  plotScatter(err, rows);
+}
+
+function plotSurface(err, rows) {
   function unpack(rows, key) {
       return rows.map(function(row)
         { return row[key]; });
@@ -45,14 +40,22 @@ function plotSMTSurface(err, rows) {
       x: unpack(rows, 'reorderBuffer'), 
       y: unpack(rows, 'l1i'), 
       opacity: 0.8,
-      color:'rgb(150,100,200)',
+      // color:'rgb(150,100,200)',
   };
 
   t1 = unpack(rows, 'thread1Cycles');
   t2 = unpack(rows, 'thread2Cycles');
   trace.z = t1.map((val, i) =>  Math.max(parseInt(val), parseInt(t2[i])));
+  Plotly.addTraces("plot", trace);
+}
 
-  var data = [trace];
+function replotSurface (err, rows) {
+  Plotly.purge("plot");
+  initPlot();
+  plotSurface(err, rows);
+}
+
+function initPlot() {
   var layout = { 
     margin: { l: 40, r: 40, b: 0, t: 0, },
     scene: {
@@ -62,6 +65,6 @@ function plotSMTSurface(err, rows) {
       zaxis: { title: "Total Execution Cycles (Thread1 and Thread2)" },
     }
   };
-  Plotly.newPlot('plot', data, layout);
+  Plotly.newPlot("plot", [], layout);
 }
 
