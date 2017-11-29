@@ -1,6 +1,6 @@
 body {
 	background-color: #2e2e2e;
-	color: #fff; /* old: #c5cbd3; */
+	color: #fa2;
 	font-size: 30px;
 	display: block;
 	margin: auto;
@@ -8,9 +8,13 @@ body {
 }
 
 /* link colors */
-a:visited { color: inherit; }
+a:link { color: #B00; }
 
-a:hover { color: #ffffff; cursor: pointer; }
+a:visited { color: #B00; }
+
+a:hover { color: #F00; cursor: pointer; }
+
+a:active { color: blue; } 
 
 video { object-fit: fill; }
 
@@ -26,28 +30,13 @@ video { object-fit: fill; }
 
 #content {
 	/* border: 1px solid #000; */
-	display: inline-block;
+	display: block;
 	padding: 10px 10px;
 	margin: auto;
 	width: 100%;
 }
 
-.pageHeader {
-    color: #ffa750;
-    text-align: center;
-    text-decoration: underline;
-    margin: 10px 0px;
-}
-
-.subHeader {
-    color: #ffa750;
-    text-decoration: underline;
-}
-
-.figureHeader {
-    color: #ff3311;
-}
-
+/* Menu styling */
 #menu {
 	height: 20px;
 	width: 100%;
@@ -55,57 +44,20 @@ video { object-fit: fill; }
 }
 
 #menu a:hover {
-	background-color: #5fcdff;
-    box-shadow: 1px 2px 2px rgba(256,256,256,1.0);
-}
-
-#menu a:visited {
-    color: #ffffff;
+	background-color: #009FC1;
 }
 
 .item {
-    color: #ffffff;
-    background-color: #0f7dbc;
-    border-radius: 8px;
-    border-color: #2a9cde;
-    border-height: 3px; 
-    border-style: solid; 
+	background-color: #ABBBAB;
+	border: 5px solid #a62;
 	text-decoration: none;
 	font-size: 40px;
 	padding: 6px;
 	margin: 6px;
-    box-shadow: 0 3px 1px rgba(128,128,128,.3);
-}
-
-#plotMenu {
-	width: 80%;
-	margin: auto;
-    display: block;
-}
-
-#plotMenu a:hover {
-	background-color: #55d694;
-    box-shadow: 1px 3px 3px rgba(256,256,256,1.0);
-}
-
-.plotSubMenu { margin: 20px; }
-
-.plotItem {
-    color: #ffffff;
-    background-color: #00813e;
-    border-radius: 8px;
-    border-color: #8eda55;
-    border-height: 3px;
-    border-style: solid;
-	text-decoration: none;
-	font-size: 40px;
-	margin: 6px;
-    padding: 6px;
-    box-shadow: 0 3px 1px rgba(128,128,128,.3);
 }
 
 .projectDesc {
-    width: 68%;
+    width: 70%;
     display: inline-block;
 }
 
@@ -131,11 +83,11 @@ video { object-fit: fill; }
 }
 
 .threadPlot {
-	padding: 10px;
+	padding: 20px;
 }
 
 .mtDesc {
-    width: 63%;
+    width: 70%;
     display: inline-block;
 }
 .mtDesc p {
@@ -162,7 +114,7 @@ video { object-fit: fill; }
 /* Latency Visualization */
 .videoTitle {
   margin: 5px;
-  padding: 5px;
+  color: #D8D;
 }
 
 #qosVisual * {
@@ -170,8 +122,10 @@ video { object-fit: fill; }
 }
 
 .qosDesc {
-    width: 68%;
+    width: 70%;
     display: inline-block;
+}
+.qosDesc p {
     text-align: left;
 }
 
@@ -182,13 +136,5 @@ video { object-fit: fill; }
   display: block;
   margin: auto;
   padding: 30px;
-}
-
-.plotDesc {
-  text-align: left;
-  width: 60%;
-  margin: auto;
-  padding: 20px;
-  display: block;
 }
 

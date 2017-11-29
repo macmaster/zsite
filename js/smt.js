@@ -57,7 +57,7 @@ function buildSmtMap(gridSize, ratios) {
 
 function getFineCell(x, y, color, idle) {
 	var ticket = Math.random();
-	var type = ticket < (idle * 1.2) ? "idle" : color;
+	var type = ticket < (idle * 5) ? "idle" : color;
 	return { x : x, y : y , type : type };
 }
 
@@ -80,9 +80,16 @@ function buildFineMap(gridSize, ratios) {
 	return map;
 }
 
+var flip = 0;
+var flipIdx = 0;
+var hyperparams = [3, 10];
 function getCoarseCell(x, y, color, idle) {
 	var ticket = Math.random();
-	var type = ticket < (idle * 1.5) ? "idle" : color;
+    if (flip++ >= 30) {
+      flipIdx = 1 - flipIdx;
+      flip = 0;
+    }
+	var type = ticket < (idle * hyperparams[flipIdx]) ? "idle" : color;
 	return { x : x, y : y , type : type };
 }
 
@@ -162,7 +169,6 @@ function nextFine(fine, gridSize, ratios) {
 	fine.grid[0] = [];
 	var color = turn ? "thread2" : "thread1";
 	var idle = 1 - (ratios.thread1 + ratios.thread2);
-	idle *= 2;
 	for (y = 0; y < gridSize.y; y++) {
 		var cell = getFineCell(0, y, color, idle);
 		fine.grid[0][y] = cell;
@@ -180,7 +186,6 @@ function nextCoarse(coarse, gridSize, ratios) {
 	coarse.grid[0] = [];
 	var period = Math.floor(gridSize.x / 2);
 	var idle = 1 - (ratios.thread1 + ratios.thread2);
-	idle *= 5;
 	var color = tick > period ? "thread1" : "thread2";
 	tick = (tick + 1) % gridSize.x;
 	for (y = 0; y < gridSize.y; y++) {

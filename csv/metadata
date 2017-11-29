@@ -1,0 +1,17 @@
+*_ooo.csv
+id: test number
+dcache: size of the data cache in bytes
+reorderBuffer: 
+ooocycles:
+
+*_smt.csv
+id: test number
+dcache: size of the data cache in bytes
+reorderBuffer: 
+thread1Cycles:
+thread2Cycles: 
+
+experiments run:
+smt reorder buffer: {(32, 32), (40, 24), (48, 16), (56, 8)}
+ooo reorder buffer: {8, 16, 32, 48, 56, 64}
+dcache: {8k, 16k, 32k}

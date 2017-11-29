@@ -13,13 +13,13 @@
 </head>
 <body> 
 <div id="header">
-	<h1><a href="/">Simultaneous Multithreading on the Cloud</a></h1>
+	<h1><a style="color: #b35700" href="/">Simultaneous Multithreading on the Cloud</a></h1>
 	<div id="menu">
 		<a class="item" href="/">Home</a>
 		<a class="item" href="smt.php">SMT</a>
-		<a class="item" href="latency.php">Latency</a>
+		<a class="item" href="latency.php">QoS</a>
 		<a class="item" href="plots.php">Experiment</a>
-	</div>
+	</div><br>
 </div>
 <div id="content">
 
