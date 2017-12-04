@@ -1,46 +1,35 @@
-function plotOOOScatter(err, rows) { plotScatter(err, rows, "Coarse-grained Multithreading (OOO)"); }
-function plotSMTScatter(err, rows) { plotScatter(err, rows, "Simultaneous Multithreading (SMT)"); }
 function plotOOOSurface(err, rows) { 
   plotSurface(err, rows, {
     name: "Coarse-grained Multithreading (OOO)",
-    color: 'rgb(50,100,200)',
-    smt: false,
-    addZero: true,
-  }); 
+    color: "rgb(50,100,200)",
+    opacity: 0.8,
+    field: "oooCycles",
+    lambda: (val, i) => 2 * val,
+  });
+  plotSurface(err, rows, {
+    name: "Zero Plane",
+    color: "rgb(255,255,255)",
+    opacity: 0.0,
+    field: "oooCycles",
+    lambda: (val, i) => 0 * val,
+  });
+  
 }
 function plotSMTSurface(err, rows) { 
   plotSurface(err, rows, {
-    name: "Simultaneous Multithreading (SMT)",
-    color: 'rgb(235, 123, 0)',
-    smt: true,
-    addZero: false,
+    name: "Simultaneous Multithreading LC (SMT)",
+    color: "rgb(0, 123, 0)",
+    opacity: 0.8,
+    field: "thread1Cycles",
+    lambda: (val, i) => 1 * val,
+  });   
+  plotSurface(err, rows, {
+    name: "Simultaneous Multithreading LNC (SMT)",
+    color: "rgb(235, 123, 0)",
+    opacity: 0.8,
+    field: "thread2Cycles",
+    lambda: (val, i) => 1 * val,
   }); 
-}
-
-function plotScatter(err, rows, traceName) {
-  function unpack(rows, key) {
-      return rows.map(function(row)
-        { return row[key]; });
-  }
-
-  var trace = {
-      type: 'scatter3d',
-      name: traceName,
-      x: unpack(rows, 'reorderBuffer'), 
-      y: unpack(rows, 'cacheSize'), 
-      mode: 'markers',
-      marker: {
-            // color: "rgb(50, 100, 150)",
-            line: { color: 'rgba(50, 50, 50, 0.14)', width: 0.5 },
-            opacity: 0.8,
-            size: 6,
-      },
-  };
-
-  t1 = unpack(rows, 'thread1Cycles');
-  t2 = unpack(rows, 'thread2Cycles');
-  trace.z = t1.map((val, i) =>  Math.max(parseInt(val), parseInt(t2[i])));
-  Plotly.addTraces("plot", trace);
 }
 
 function plotSurface(err, rows, kwargs) {
@@ -50,29 +39,20 @@ function plotSurface(err, rows, kwargs) {
   }
 
   var trace = {
-      type: 'mesh3d',
+      type: "mesh3d",
       name: kwargs.name,
-      y: unpack(rows, 'cacheSize'), 
-      opacity: 0.8,
+      y: unpack(rows, "cacheSize"), 
+      x: unpack(rows, "reorderBuffer"),
+      z: unpack(rows, kwargs.field).map(kwargs.lambda),
+	  i: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, ],
+	  j: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, ], 
+	  k: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,],
+      opacity: kwargs.opacity,
       color: kwargs.color,
   };
 
-  if (kwargs.smt) {
-    // SMT trace.
-    t1 = unpack(rows, 'thread1Cycles');
-    t2 = unpack(rows, 'thread2Cycles');
-	trace.x = unpack(rows, 'reorderBuffer');
-    trace.z = t1.map((val, i) =>  Math.max(parseInt(val), parseInt(t2[i])));
-  } else {
-    t = unpack(rows, 'oooCycles');
-	trace.x = unpack(rows, 'reorderBuffer');
-    trace.z = t.map((val, i) => val * 2);
-  }
   Plotly.addTraces("plot", trace);
-
-  if (kwargs.addZero) {
-    plotZeroPlane(trace.x, trace.y);
-  }
+  return trace;
 }
 
 
@@ -80,7 +60,7 @@ function plotZeroPlane(x, y) {
   console.log(x);
   console.log(y);
   var trace = {
-    type: 'mesh3d',
+    type: "mesh3d",
     name: "zero",
     x: x,
     y: x,
